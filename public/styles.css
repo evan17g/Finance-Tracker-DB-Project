@@ -1,0 +1,9 @@
+/* Center headers */
+#transactionsTable th {
+    text-align: center;
+}
+
+/* Center body cells */
+#transactionsTable td {
+    text-align: center;
+}

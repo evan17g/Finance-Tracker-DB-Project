@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Finance Tracker</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Finance Tracker</h1>
@@ -10,7 +11,7 @@
     <h2>Add Transaction</h2>
     <form id="transactionForm">
         <input type="date" id="date" required>
-        <input type="text" id="description" placeholder="Description" required>
+        <input type="text" id="merchant" placeholder="Merchant" required>
         <input type="number" id="amount" step="0.01" placeholder="Amount" required>
         <!-- <input type="text" id="category" placeholder="Category" required> -->
         <select id="categorySelector" required>
@@ -25,7 +26,7 @@
     <h2>Transactions</h2>
     <table border="1" id="transactionsTable">
         <thead>
-            <tr><th>Transaction ID</th><th>Date</th><th>Description</th><th>Amount</th><th>Category</th></tr>
+            <tr><th>Transaction ID</th><th>Date</th><th>Merchant</th><th>Amount</th><th>Category</th></tr>
         </thead>
         <tbody></tbody>
     </table>

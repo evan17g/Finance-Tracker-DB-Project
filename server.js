@@ -32,7 +32,7 @@ db.serialize(() => { // serialize is used to ensure that tables are created in p
     db.run(`CREATE TABLE IF NOT EXISTS Transactions 
             (id INTEGER PRIMARY KEY,
             date TEXT,  
-            description TEXT,
+            merchant TEXT,
             amount REAL,
             category_id INTEGER,
             FOREIGN KEY (category_id) REFERENCES Categories (id))`);
@@ -50,7 +50,7 @@ db.serialize(() => { // serialize is used to ensure that tables are created in p
 // get all transactions from the database
 app.get("/transactions", (req, res) => {
     // set up sql query to get all transactions
-    db.all(`SELECT t.id, t.date, t.description, t.amount, c.name AS category_name
+    db.all(`SELECT t.id, t.date, t.merchant, t.amount, c.name AS category_name
             FROM Transactions t
             JOIN Categories c
             ON t.category_id = c.id`, (err, rows) => {
@@ -78,7 +78,7 @@ app.get("/categories", (req, res) => {
 app.post("/transactions", (req, res) => {
     // first get data that was passed in from request
     var date = req.body.date;
-    var description = req.body.description;
+    var merchant = req.body.merchant;
     var amount = req.body.amount;
     var category = req.body.category;
 
@@ -91,11 +91,11 @@ app.post("/transactions", (req, res) => {
             if (err) {console.error(err.message); return;}
 
             // now insert the transaction
-            db.run("INSERT INTO Transactions (date, description, amount, category_id) VALUES (?, ?, ?, ?)", [date, description, amount, data.id], function(err){
+            db.run("INSERT INTO Transactions (date, merchant, amount, category_id) VALUES (?, ?, ?, ?)", [date, merchant, amount, data.id], function(err){
                 if (err) {console.error(err.message); return;}
                 else { // sending response to client
                     // getting latest entry out of db to send back to client for table update
-                    db.get(`SELECT t.id, t.date, t.description, t.amount, c.name AS category_name
+                    db.get(`SELECT t.id, t.date, t.merchant, t.amount, c.name AS category_name
                             FROM Transactions t
                             JOIN Categories c
                             ON t.category_id = c.id

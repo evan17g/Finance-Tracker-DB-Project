@@ -61,8 +61,8 @@ function getTransactions() {
             idCell.textContent = data[i].id;
             const dateCell = newRow.insertCell(1);
             dateCell.textContent = data[i].date;
-            const descriptionCell = newRow.insertCell(2);
-            descriptionCell.textContent = data[i].description;
+            const merchantCell = newRow.insertCell(2);
+            merchantCell.textContent = data[i].merchant;
             const amountCell = newRow.insertCell(3);
             amountCell.textContent = data[i].amount;
             const categoryCell = newRow.insertCell(4);
@@ -78,7 +78,7 @@ form.addEventListener("submit", (e) => {
     // now need to get the data out of the form
     var transaction = {
         date: document.getElementById('date').value,
-        description: document.getElementById('description').value,
+        merchant: document.getElementById('merchant').value,
         amount: parseFloat(document.getElementById('amount').value),
         category: document.getElementById('categorySelector').value
     };
@@ -101,8 +101,8 @@ form.addEventListener("submit", (e) => {
         idCell.textContent = data.id;
         const dateCell = newRow.insertCell(1);
         dateCell.textContent = data.date;
-        const descriptionCell = newRow.insertCell(2);
-        descriptionCell.textContent = data.description;
+        const merchantCell = newRow.insertCell(2);
+        merchantCell.textContent = data.merchant;
         const amountCell = newRow.insertCell(3);
         amountCell.textContent = data.amount;
         const categoryCell = newRow.insertCell(4);
