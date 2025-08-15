@@ -2,6 +2,40 @@
 const form = document.getElementById('transactionForm');
 const tableBody = document.querySelector('#transactionsTable tbody');
 const removeButton = document.getElementById('removeButton');
+const categorySelector = document.getElementById('categorySelector');
+
+// gets all of the categories and populates drop-down menu
+function getCategories() {
+    fetch("/categories")
+    .then(response => {
+        if (!response.ok) { // check if response was good
+            throw new Error ("Server response had an error.");
+        } return response.json();
+    }).then(data => {
+        // data now contains the array full of category objects
+        // console.log("Categories:");
+        // console.log(data);
+
+        // clear selector
+        categorySelector.innerHTML = "";
+
+        // add placeholder
+        const placeholderOption = document.createElement("option");
+        placeholderOption.value = "";
+        placeholderOption.textContent = "Select a category";
+        placeholderOption.disabled = true;
+        placeholderOption.selected = true;
+        categorySelector.appendChild(placeholderOption);
+
+        // add array values as options for select
+        data.forEach(element => {
+            const option = document.createElement("option");
+            option.value = element.name;     // value sent in form submission
+            option.textContent = element.name; // text shown in dropdown
+            categorySelector.appendChild(option);
+        });
+    });
+}
 
 // gets all of the table data and displays transactions
 function getTransactions() {
@@ -12,7 +46,8 @@ function getTransactions() {
         } return response.json();
     }).then(data => {
         // data now contains the array full of transaction objects
-        console.log(data);
+        // console.log("Transactions:");
+        // console.log(data);
 
         // remove any data from table from past requests
         tableBody.innerHTML = "";
@@ -45,7 +80,7 @@ form.addEventListener("submit", (e) => {
         date: document.getElementById('date').value,
         description: document.getElementById('description').value,
         amount: parseFloat(document.getElementById('amount').value),
-        category: document.getElementById('category').value
+        category: document.getElementById('categorySelector').value
     };
 
     // now need to send this new transaction to the server
@@ -87,4 +122,5 @@ removeButton.addEventListener("click", () => {
 });
 
 // This should run immediately when the webpage is initially loaded up
+getCategories();
 getTransactions();

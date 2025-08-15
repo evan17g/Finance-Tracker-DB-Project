@@ -20,6 +20,14 @@ db.serialize(() => { // serialize is used to ensure that tables are created in p
     // first creating the categories table
     db.run("CREATE TABLE IF NOT EXISTS Categories (id INTEGER PRIMARY KEY, name TEXT UNIQUE)");
 
+    // Adding the default categories
+    db.run("INSERT OR IGNORE INTO Categories (name) VALUES (?), (?), (?), (?), (?), (?), (?), (?), (?)", 
+        ["Housing", "Utilities", "Food", "Transportation", "Healthcare", 
+        "Insurance", "Entertainment/Recreation", "Savings/Investments", "Miscellaneous"], 
+        function(err) {
+        if (err) {console.error(err.message); return;}
+    });
+
     // now creating the transactions table
     db.run(`CREATE TABLE IF NOT EXISTS Transactions 
             (id INTEGER PRIMARY KEY,
@@ -29,6 +37,15 @@ db.serialize(() => { // serialize is used to ensure that tables are created in p
             category_id INTEGER,
             FOREIGN KEY (category_id) REFERENCES Categories (id))`);
 });
+
+// // deleting all categories from the database
+// app.delete("/categories", (req, res) => {
+//     // sql query to delete all rows
+//     db.run("DELETE FROM Categories", function(err) {
+//         if (err) {console.error(err.message); return;}
+//         else {res.json({success : true});}
+//     })
+// });
 
 // get all transactions from the database
 app.get("/transactions", (req, res) => {
@@ -44,6 +61,18 @@ app.get("/transactions", (req, res) => {
         res.json(rows);
     });
 });
+
+// get all categories from the database
+app.get("/categories", (req, res) => {
+    // sql query to return all categories
+    db.all("SELECT * FROM Categories", (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            return;
+        }
+        res.json(rows);
+    })
+})
 
 // posting a transaction to the database
 app.post("/transactions", (req, res) => {
