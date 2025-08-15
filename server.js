@@ -121,5 +121,10 @@ app.delete("/transactions", (req, res) => {
     })
 });
 
+// // posting transactions in bulk
+// app.post("/transactions/bulk", (req, res) => {
+//     fetch("/transactions", )
+// })
+
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));

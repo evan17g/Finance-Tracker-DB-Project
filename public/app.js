@@ -1,7 +1,11 @@
+// // importing jquery to parse csv
+// const csv = require('jquery-csv');
+
 // first getting variables to hold the form and table components
 const form = document.getElementById('transactionForm');
 const tableBody = document.querySelector('#transactionsTable tbody');
 const removeButton = document.getElementById('removeButton');
+const csvImportButton = document.getElementById('csvImportButton');
 const categorySelector = document.getElementById('categorySelector');
 
 // gets all of the categories and populates drop-down menu
@@ -34,6 +38,33 @@ function getCategories() {
             option.textContent = element.name; // text shown in dropdown
             categorySelector.appendChild(option);
         });
+    });
+}
+
+function postTransaction(transaction) {
+    fetch("/transactions", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(transaction)
+    }).then(response => {
+        if (!response.ok) { // check if response was good
+            throw new Error ("Server response had an error.");
+        } return response.json();
+    }).then(data => {
+        // add new row to the html table
+        const newRow = tableBody.insertRow();
+
+        // putting data into the table
+        const idCell = newRow.insertCell(0);
+        idCell.textContent = data.id;
+        const dateCell = newRow.insertCell(1);
+        dateCell.textContent = data.date;
+        const merchantCell = newRow.insertCell(2);
+        merchantCell.textContent = data.merchant;
+        const amountCell = newRow.insertCell(3);
+        amountCell.textContent = data.amount;
+        const categoryCell = newRow.insertCell(4);
+        categoryCell.textContent = data.category_name;
     });
 }
 
@@ -84,30 +115,7 @@ form.addEventListener("submit", (e) => {
     };
 
     // now need to send this new transaction to the server
-    fetch("/transactions", {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(transaction)
-    }).then(response => {
-        if (!response.ok) { // check if response was good
-            throw new Error ("Server response had an error.");
-        } return response.json();
-    }).then(data => {
-        // add new row to the html table
-        const newRow = tableBody.insertRow();
-
-        // putting data into the table
-        const idCell = newRow.insertCell(0);
-        idCell.textContent = data.id;
-        const dateCell = newRow.insertCell(1);
-        dateCell.textContent = data.date;
-        const merchantCell = newRow.insertCell(2);
-        merchantCell.textContent = data.merchant;
-        const amountCell = newRow.insertCell(3);
-        amountCell.textContent = data.amount;
-        const categoryCell = newRow.insertCell(4);
-        categoryCell.textContent = data.category_name;
-    });
+    postTransaction(transaction);
 });
 
 // listening to remove button
@@ -119,6 +127,25 @@ removeButton.addEventListener("click", () => {
             throw new Error ("Error deleting transaction data.");
         } return response.json();
     }).then(() => getTransactions());
+});
+
+// listening to csv import button
+csvImportButton.addEventListener("click", () => {
+    fetch("/data/sample_transactions.csv", {
+    }).then(response => {
+        if (!response.ok) { // check if response was good
+            throw new Error ("Error fetching data from csv file.");
+        } return response.text();
+    }).then(csvText => {
+        // acquire array of objects from csv file
+        const transactions = $.csv.toObjects(csvText);
+        return transactions;
+    }).then(transactions => {
+        // now use fetch to send to server for entry to database
+        transactions.forEach(transaction => {
+            postTransaction(transaction);
+        })
+    });
 });
 
 // This should run immediately when the webpage is initially loaded up

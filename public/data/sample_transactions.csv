@@ -1,0 +1,101 @@
+date,merchant,amount,category
+06/29/2025,Home Depot,407.26,Food
+06/12/2025,Starbucks,370.64,Utilities
+02/24/2025,Home Depot,105.22,Utilities
+01/30/2025,Netflix,337.56,Healthcare
+03/31/2025,Costco,485.76,Healthcare
+02/05/2025,Uber,302.81,Healthcare
+03/17/2025,Costco,309.29,Housing
+03/02/2025,Uber,280.71,Miscellaneous
+07/05/2025,Netflix,398.89,Transportation
+02/23/2025,Netflix,246.09,Healthcare
+05/07/2025,Costco,243.57,Food
+02/03/2025,Target,71.67,Entertainment/Recreation
+03/13/2025,CVS,435.36,Utilities
+06/06/2025,CVS,457.21,Insurance
+02/06/2025,Shell,217.91,Healthcare
+04/12/2025,Home Depot,123.59,Housing
+02/22/2025,Walmart,104.73,Housing
+03/08/2025,Home Depot,214.22,Transportation
+03/31/2025,Shell,331.52,Healthcare
+03/06/2025,Apple Store,164.9,Transportation
+01/03/2025,Netflix,474.98,Food
+01/10/2025,Uber,479.64,Insurance
+04/18/2025,Netflix,296.65,Insurance
+04/08/2025,Uber,172.99,Entertainment/Recreation
+03/31/2025,Costco,448.66,Savings/Investments
+06/12/2025,Home Depot,321.3,Transportation
+02/21/2025,Target,77.12,Housing
+02/28/2025,Netflix,61.74,Transportation
+02/15/2025,Starbucks,384.17,Transportation
+06/18/2025,Apple Store,167.88,Savings/Investments
+01/11/2025,Costco,491.29,Entertainment/Recreation
+05/13/2025,Target,340.28,Utilities
+02/14/2025,Home Depot,148.69,Insurance
+02/03/2025,Starbucks,148.16,Miscellaneous
+05/24/2025,Starbucks,313.31,Food
+05/12/2025,Starbucks,94.59,Insurance
+05/09/2025,Starbucks,200.9,Healthcare
+01/21/2025,Target,203.16,Insurance
+06/28/2025,Target,416.21,Miscellaneous
+04/03/2025,Costco,404.33,Utilities
+06/23/2025,Home Depot,208.56,Entertainment/Recreation
+03/12/2025,Apple Store,460.95,Housing
+03/11/2025,Netflix,405.13,Savings/Investments
+04/26/2025,Target,61.86,Utilities
+02/09/2025,Walmart,299.65,Miscellaneous
+04/13/2025,CVS,215.07,Miscellaneous
+04/16/2025,Costco,386.65,Utilities
+03/18/2025,Netflix,118.51,Healthcare
+07/16/2025,Apple Store,117.0,Insurance
+05/02/2025,Target,182.26,Entertainment/Recreation
+05/21/2025,Uber,117.68,Miscellaneous
+05/28/2025,Shell,105.57,Transportation
+01/02/2025,Apple Store,336.36,Food
+07/04/2025,Shell,426.62,Transportation
+04/27/2025,Apple Store,48.4,Transportation
+06/06/2025,Starbucks,104.91,Utilities
+02/25/2025,Costco,253.73,Savings/Investments
+04/22/2025,Walmart,306.04,Healthcare
+07/04/2025,Costco,167.69,Healthcare
+03/27/2025,Costco,418.74,Utilities
+03/02/2025,Uber,206.64,Entertainment/Recreation
+03/11/2025,Shell,495.53,Insurance
+07/14/2025,Shell,374.39,Miscellaneous
+03/17/2025,Target,102.76,Miscellaneous
+06/30/2025,Starbucks,471.03,Insurance
+01/26/2025,Netflix,90.06,Utilities
+02/26/2025,Netflix,459.33,Savings/Investments
+03/30/2025,Uber,201.28,Entertainment/Recreation
+05/22/2025,Target,475.62,Miscellaneous
+02/28/2025,Netflix,332.11,Miscellaneous
+07/06/2025,Walmart,189.63,Insurance
+02/10/2025,Target,133.9,Transportation
+03/08/2025,Uber,296.83,Food
+03/06/2025,Walmart,298.93,Transportation
+07/01/2025,Costco,421.4,Healthcare
+06/21/2025,Target,163.48,Housing
+07/05/2025,Home Depot,284.94,Insurance
+04/29/2025,Netflix,74.38,Transportation
+04/14/2025,Uber,412.6,Healthcare
+01/02/2025,Shell,237.99,Transportation
+03/02/2025,Home Depot,39.54,Insurance
+06/01/2025,Starbucks,220.12,Savings/Investments
+04/29/2025,Home Depot,63.87,Entertainment/Recreation
+01/23/2025,Shell,111.49,Transportation
+05/27/2025,Netflix,345.61,Transportation
+03/12/2025,Apple Store,466.92,Miscellaneous
+04/18/2025,Netflix,262.64,Transportation
+06/19/2025,Starbucks,162.52,Insurance
+05/17/2025,Uber,14.43,Healthcare
+03/06/2025,Target,99.93,Insurance
+02/21/2025,Starbucks,111.09,Insurance
+05/28/2025,Shell,475.82,Healthcare
+05/14/2025,Apple Store,150.4,Food
+01/27/2025,Netflix,352.28,Entertainment/Recreation
+07/06/2025,Apple Store,185.78,Transportation
+06/29/2025,Netflix,443.42,Food
+02/10/2025,CVS,357.75,Healthcare
+04/10/2025,Home Depot,72.44,Transportation
+06/03/2025,Uber,343.97,Housing
+03/16/2025,Netflix,336.0,Housing
