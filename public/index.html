@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Finance Tracker</title>
+</head>
+<body>
+    <h1>Finance Tracker</h1>
+
+    <h2>Add Transaction</h2>
+    <form id="transactionForm">
+        <input type="date" id="date" required>
+        <input type="text" id="description" placeholder="Description" required>
+        <input type="number" id="amount" step="0.01" placeholder="Amount" required>
+        <input type="text" id="category" placeholder="Category" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <h2>Remove Transactions</h2>
+    <button type="reset" id="removeButton">Clear</button>
+
+
+    <h2>Transactions</h2>
+    <table border="1" id="transactionsTable">
+        <thead>
+            <tr><th>Transaction ID</th><th>Date</th><th>Description</th><th>Amount</th><th>Category</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>
