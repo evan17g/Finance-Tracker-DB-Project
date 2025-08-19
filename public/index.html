@@ -25,7 +25,12 @@
     <button type="reset" id="removeButton">Clear</button>
 
     <h2>Import Transactions From CSV</h2>
-    <button type="reset" id="csvImportButton">Import</button>
+    <form id="csvImportForm" style="margin-bottom: 10px;">
+        <input type="file" id="fileInput" required>
+        <button type="submit">Import</button>
+    </form>
+    <a href="/csvDownload">Download sample csv data here</a>
+    
 
     <h2>Transactions</h2>
     <table border="1" id="transactionsTable">

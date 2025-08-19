@@ -129,24 +129,49 @@ removeButton.addEventListener("click", () => {
     }).then(() => getTransactions());
 });
 
-// listening to csv import button
-csvImportButton.addEventListener("click", () => {
-    fetch("/data/sample_transactions.csv", {
-    }).then(response => {
-        if (!response.ok) { // check if response was good
-            throw new Error ("Error fetching data from csv file.");
-        } return response.text();
-    }).then(csvText => {
-        // acquire array of objects from csv file
-        const transactions = $.csv.toObjects(csvText);
-        return transactions;
-    }).then(transactions => {
-        // now use fetch to send to server for entry to database
-        transactions.forEach(transaction => {
-            postTransaction(transaction);
-        })
-    });
-});
+document.getElementById("csvImportForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    // get file from input
+    const file = document.getElementById("fileInput").files[0];
+
+    // check file validity
+    if (!file) {console.log("No file selected."); return;}
+
+    // read file
+    const text = await file.text();
+    const transactions = $.csv.toObjects(text);
+
+    // now use fetch to send to server for entry to database
+        fetch("transactions/bulk", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(transactions)
+        }).then(() => getTransactions());
+})
+
+// // listening to csv import button
+// csvImportButton.addEventListener("click", (e) => {
+//     e.preventDefault(); // prevent page reload when form submitted
+
+//     fetch("/data/sample_transactions.csv", {
+//     }).then(response => {
+//         if (!response.ok) { // check if response was good
+//             throw new Error ("Error fetching data from csv file.");
+//         } return response.text();
+//     }).then(csvText => {
+//         // acquire array of objects from csv file
+//         const transactions = $.csv.toObjects(csvText);
+//         return transactions;
+//     }).then(transactions => {
+//         // now use fetch to send to server for entry to database
+//         fetch("transactions/bulk", {
+//             method: "POST",
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify(transactions)
+//         }).then(() => getTransactions());
+//     });
+// });
 
 // This should run immediately when the webpage is initially loaded up
 getCategories();
